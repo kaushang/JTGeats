@@ -184,6 +184,7 @@
             height: 245px;
             position: relative;
         }
+
         .price {
             font-size: 18px;
             font-weight: 700;
@@ -538,7 +539,7 @@
 
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+            background: #F7F8FA;
             padding: 60px 0;
         }
 
@@ -555,17 +556,40 @@
         }
 
         .contact-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
+            font-size: 24px;
+            font-weight: 400;
+            color: #101115;
             margin-bottom: 8px;
+            letter-spacing: -1.2%;
+            font-family: "Roboto", sans-serif;
         }
 
         .contact-subtitle {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
+            font-size: 24px;
+            font-weight: 400;
+            color: #101115;
             margin-bottom: 30px;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .contact-text {
+            padding-top: 10px;
+            padding-bottom: 30px;
+        }
+
+        .contact-title,
+        .contact-subtitle {
+            line-height: 24px;
+            margin-bottom: 4px;
+        }
+
+        .contact-subtitle {
+            margin-bottom: 12px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 12px;
         }
 
         .form-row {
@@ -576,17 +600,21 @@
 
         .form-group {
             flex: 1;
+            color: #929292;
+             font-family: "Roboto", sans-serif;
         }
 
         .form-group.full {
             width: 100%;
             margin-bottom: 20px;
+            color: #929292;
+            font-family: "Roboto", sans-serif;
         }
 
         .form-input {
             width: 100%;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #ffffff;
             border-radius: 8px;
             font-size: 14px;
             outline: none;
@@ -599,17 +627,17 @@
 
         textarea.form-input {
             height: 120px;
-            resize: vertical;
+            resize: none;
+            border: 1px solid #ffffff;
         }
 
         .submit-button {
             background: #1AC073;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 20px 70px;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 14px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -657,8 +685,9 @@
         .footer-nav a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 18px;
             transition: opacity 0.3s;
+            font-family: "Roboto", sans-serif;
         }
 
         .footer-nav a:hover {
@@ -823,7 +852,7 @@
         }
 
         // Initialize carousel
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateCarousel();
             startAutoSlide();
 
@@ -907,7 +936,7 @@
         }
 
         // Start auto-slide when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             startAutoSlide();
 
             // Pause auto-slide on hover
@@ -951,7 +980,8 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Authentic Home food in India</h1>
-                    <p class="hero-description">JTGeats is a courier service in which authentic home cook food is delivered to a customer</p>
+                    <p class="hero-description">JTGeats is a courier service in which authentic home cook food is
+                        delivered to a customer</p>
                     <div class="search-container">
                         <input type="text" class="search-input" placeholder="Search food you love">
                         <img src="" alt="Search Button">
@@ -1357,7 +1387,9 @@
             <h2 class="video-title">We are providing best</h2>
             <h3 class="video-subtitle">home cooked food delivery service.</h3>
             <p class="video-description">
-                A food delivery service that enables users to order food from local restaurants and food cooperatives via their smartphone or computer. Food is prepared by restaurants then transported by food couriers to the customers.
+                A food delivery service that enables users to order food from local restaurants and food cooperatives
+                via their smartphone or computer. Food is prepared by restaurants then transported by food couriers to
+                the customers.
             </p>
             <div class="video-container">
                 <div class="video-placeholder">
@@ -1372,25 +1404,28 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-form">
-                    <h3 class="contact-title">Do you have a question</h3>
-                    <h3 class="contact-subtitle">or want to become a seller?</h3>
+                    <div class="contact-text">
+                        <h3 class="contact-title">Do you have a question</h3>
+                        <h3 class="contact-subtitle">or want to become a seller?</h3>
+                        <p>Fill this form and our manager will contact you next 48 hours.</p>
+                    </div>
                     <form>
                         <div class="form-row">
                             <div class="form-group">
                                 <input type="text" class="form-input" placeholder="Your Name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Your Email">
+                                <input type="email" class="form-input" placeholder="Your e-mail">
                             </div>
                         </div>
                         <div class="form-group full">
-                            <textarea class="form-input" placeholder="Your Message"></textarea>
+                            <textarea class="form-input" placeholder="Your message"></textarea>
                         </div>
                         <button type="submit" class="submit-button">Submit</button>
                     </form>
                 </div>
                 <div class="contact-illustration">
-                    <img src="" alt="Delivery Person Illustration">
+                    <img src="./Delivery Man/Delivery man.png" alt="Delivery Person Illustration">
                 </div>
             </div>
         </div>
@@ -1401,7 +1436,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="" alt="JTGeats Logo">
+                    <img src="./Logo/JTGeats.png" alt="JTGeats Logo">
                 </div>
                 <nav>
                     <ul class="footer-nav">
@@ -1413,10 +1448,11 @@
                     </ul>
                 </nav>
                 <div class="footer-social">
-                    <img src="" alt="Facebook">
-                    <img src="" alt="Instagram">
+                    <img src="./Social Media/Facebook.png" alt="Facebook">
+                    <img src="./Social Media/Instagram.png" alt="Instagram">
                 </div>
             </div>
+            <hr style="font-weight: 400;">
             <div class="footer-bottom">
                 <p>&copy; 2024 JTGeats. All rights reserved.</p>
             </div>
