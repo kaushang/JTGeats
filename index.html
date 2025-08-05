@@ -148,7 +148,7 @@
 
         /* Home Kitchen Section */
         .home-kitchen {
-            background: #f8f9fa;
+            background: #f7f8fa;
             padding: 60px 0;
         }
 
@@ -209,7 +209,7 @@
 
         /* Popular Items Section */
         .popular-items {
-            background: white;
+            background: #f7f8fa;
             padding: 60px 0;
             text-align: center;
         }
@@ -229,7 +229,7 @@
         }
 
         .carousel-slide {
-            min-width: 100%;
+            /* min-width: 100%; */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -281,7 +281,6 @@
 
         .food-content {
             padding: 18px;
-            /* text-align: left; */
         }
 
         .food-name-price {
@@ -338,9 +337,11 @@
             font-size: 14px;
             margin-right: 6px;
         }
+
         .plus {
             height: 12px;
         }
+
         .rating-text {
             align-self: center;
             font-size: 12px;
@@ -451,7 +452,7 @@
         }
 
         .nav-arrow.left {
-            left: -25px;
+            /* left: -25px; */
         }
 
         .nav-arrow.right {
@@ -502,7 +503,7 @@
 
         /* Video Section */
         .video-section {
-            background: white;
+            background: #fafafa;
             padding: 60px 0;
             text-align: center;
         }
@@ -530,40 +531,61 @@
         }
 
         .video-container {
-            max-width: 600px;
             margin: 0 auto;
             position: relative;
-            border-radius: 12px;
+            /* border-radius: 12px; */
             overflow: hidden;
+            /* background-color: #c7eacc; */
+            width: fit-content;
         }
 
         .video-placeholder {
-            width: 100%;
-            height: 350px;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 442px;
             position: relative;
+            display: inline-block;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .video-placeholder img {
+            display: block;
+        }
+
+        .video-placeholder::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            pointer-events: none;
+        }
+
+        .green-bg {
+            margin-top: -224px;
+            background-color: #c7eacc;
+            height: 342px;
+            width: 100%;
         }
 
         .play-button {
-            width: 80px;
-            height: 80px;
-            background: #1AC073;
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 30px;
+            margin: 0px;
+            position: absolute;
+            top: 37%;
+            left: 43%;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: none;
+        }
+
+        .play-button img {
+            margin: 0px;
         }
 
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+            background-color: #f7f8fa;
             padding: 60px 0;
         }
 
@@ -784,167 +806,187 @@
 
 <body>
     <script>
-        let currentSlide = 0;
-        const totalSlides = 3;
-        let autoSlideInterval;
-        let quantities = [1, 0, 0, 0, 0, 0, 0, 0, 0]; // Track quantities for each item
+        const carousel = document.getElementById("carousel");
+        const leftBtn = document.getElementById("leftBtn");
+        const rightBtn = document.getElementById("rightBtn");
 
-        function updateCarousel() {
-            const carouselTrack = document.getElementById('carouselTrack');
-            const translateX = -currentSlide * 100;
-            carouselTrack.style.transform = `translateX(${translateX}%)`;
+        const cardWidth = 300; // approx card width + margin
 
-            // Update indicators
-            const indicators = document.querySelectorAll('.indicator');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-            resetAutoSlide();
-        }
-
-        function previousSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-            resetAutoSlide();
-        }
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
-            resetAutoSlide();
-        }
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        // Quantity control functions
-        function increaseQuantity(itemIndex) {
-            quantities[itemIndex]++;
-            document.getElementById(`quantity-${itemIndex}`).textContent = quantities[itemIndex];
-        }
-
-        function decreaseQuantity(itemIndex) {
-            if (quantities[itemIndex] > 1) {
-                quantities[itemIndex]--;
-                document.getElementById(`quantity-${itemIndex}`).textContent = quantities[itemIndex];
-            }
-        }
-
-        function addToCart(itemIndex) {
-            quantities[itemIndex] = 1;
-            console.log(`Added item ${itemIndex} to cart`);
-            // Here you can add actual cart functionality
-        }
-
-        // Initialize carousel
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCarousel();
-            startAutoSlide();
-
-            // Pause auto-slide on hover
-            const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideInterval);
-            });
-
-            carouselContainer.addEventListener('mouseleave', () => {
-                startAutoSlide();
-            });
-
-            // Touch/swipe support for mobile
-            let startX = 0;
-            let endX = 0;
-
-            carouselContainer.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-
-            carouselContainer.addEventListener('touchmove', (e) => {
-                endX = e.touches[0].clientX;
-            });
-
-            carouselContainer.addEventListener('touchend', () => {
-                const threshold = 50;
-                const diff = startX - endX;
-
-                if (Math.abs(diff) > threshold) {
-                    if (diff > 0) {
-                        nextSlide();
-                    } else {
-                        previousSlide();
-                    }
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    previousSlide();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                }
+        leftBtn.addEventListener("click", () => {
+            carousel.scrollBy({
+                left: -cardWidth,
+                behavior: "smooth"
             });
         });
-        // Update indicators
 
-        const indicators = document.querySelectorAll('.indicator');
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentSlide);
-        });
-
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-            resetAutoSlide();
-        }
-
-        function previousSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-            resetAutoSlide();
-        }
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
-            resetAutoSlide();
-        }
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        // Start auto-slide when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            startAutoSlide();
-
-            // Pause auto-slide on hover
-            const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideInterval);
-            });
-
-            carouselContainer.addEventListener('mouseleave', () => {
-                startAutoSlide();
+        rightBtn.addEventListener("click", () => {
+            carousel.scrollBy({
+                left: cardWidth,
+                behavior: "smooth"
             });
         });
+
+        // let currentSlide = 0;
+        // const totalSlides = 3;
+        // let autoSlideInterval;
+        // let quantities = [1, 0, 0, 0, 0, 0, 0, 0, 0]; // Track quantities for each item
+
+        // function updateCarousel() {
+        //     const carouselTrack = document.getElementById('carouselTrack');
+        //     const translateX = -currentSlide * 100;
+        //     carouselTrack.style.transform = `translateX(${translateX}%)`;
+
+        //     // Update indicators
+        //     const indicators = document.querySelectorAll('.indicator');
+        //     indicators.forEach((indicator, index) => {
+        //         indicator.classList.toggle('active', index === currentSlide);
+        //     });
+        // }
+
+        // function nextSlide() {
+        //     currentSlide = (currentSlide + 1) % totalSlides;
+        //     updateCarousel();
+        //     resetAutoSlide();
+        // }
+
+        // function previousSlide() {
+        //     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        //     updateCarousel();
+        //     resetAutoSlide();
+        // }
+
+        // function goToSlide(slideIndex) {
+        //     currentSlide = slideIndex;
+        //     updateCarousel();
+        //     resetAutoSlide();
+        // }
+
+        // function startAutoSlide() {
+        //     autoSlideInterval = setInterval(nextSlide, 5000);
+        // }
+
+        // function resetAutoSlide() {
+        //     clearInterval(autoSlideInterval);
+        //     startAutoSlide();
+        // }
+
+        // // Quantity control functions
+        // function increaseQuantity(itemIndex) {
+        //     quantities[itemIndex]++;
+        //     document.getElementById(`quantity-${itemIndex}`).textContent = quantities[itemIndex];
+        // }
+
+        // function decreaseQuantity(itemIndex) {
+        //     if (quantities[itemIndex] > 1) {
+        //         quantities[itemIndex]--;
+        //         document.getElementById(`quantity-${itemIndex}`).textContent = quantities[itemIndex];
+        //     }
+        // }
+
+        // function addToCart(itemIndex) {
+        //     quantities[itemIndex] = 1;
+        //     console.log(`Added item ${itemIndex} to cart`);
+        //     // Here you can add actual cart functionality
+        // }
+
+        // // Initialize carousel
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     updateCarousel();
+        //     startAutoSlide();
+
+        //     // Pause auto-slide on hover
+        //     const carouselContainer = document.querySelector('.carousel-container');
+        //     carouselContainer.addEventListener('mouseenter', () => {
+        //         clearInterval(autoSlideInterval);
+        //     });
+
+        //     carouselContainer.addEventListener('mouseleave', () => {
+        //         startAutoSlide();
+        //     });
+
+        //     // Touch/swipe support for mobile
+        //     let startX = 0;
+        //     let endX = 0;
+
+        //     carouselContainer.addEventListener('touchstart', (e) => {
+        //         startX = e.touches[0].clientX;
+        //     });
+
+        //     carouselContainer.addEventListener('touchmove', (e) => {
+        //         endX = e.touches[0].clientX;
+        //     });
+
+        //     carouselContainer.addEventListener('touchend', () => {
+        //         const threshold = 50;
+        //         const diff = startX - endX;
+
+        //         if (Math.abs(diff) > threshold) {
+        //             if (diff > 0) {
+        //                 nextSlide();
+        //             } else {
+        //                 previousSlide();
+        //             }
+        //         }
+        //     });
+
+        //     // Keyboard navigation
+        //     document.addEventListener('keydown', (e) => {
+        //         if (e.key === 'ArrowLeft') {
+        //             previousSlide();
+        //         } else if (e.key === 'ArrowRight') {
+        //             nextSlide();
+        //         }
+        //     });
+        // });
+        // // Update indicators
+
+        // const indicators = document.querySelectorAll('.indicator');
+        // indicators.forEach((indicator, index) => {
+        //     indicator.classList.toggle('active', index === currentSlide);
+        // });
+
+
+        // function nextSlide() {
+        //     currentSlide = (currentSlide + 1) % totalSlides;
+        //     updateCarousel();
+        //     resetAutoSlide();
+        // }
+
+        // function previousSlide() {
+        //     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        //     updateCarousel();
+        //     resetAutoSlide();
+        // }
+
+        // function goToSlide(slideIndex) {
+        //     currentSlide = slideIndex;
+        //     updateCarousel();
+        //     resetAutoSlide();
+        // }
+
+        // function startAutoSlide() {
+        //     autoSlideInterval = setInterval(nextSlide, 5000);
+        // }
+
+        // function resetAutoSlide() {
+        //     clearInterval(autoSlideInterval);
+        //     startAutoSlide();
+        // }
+
+        // // Start auto-slide when page loads
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     startAutoSlide();
+
+        //     // Pause auto-slide on hover
+        //     const carouselContainer = document.querySelector('.carousel-container');
+        //     carouselContainer.addEventListener('mouseenter', () => {
+        //         clearInterval(autoSlideInterval);
+        //     });
+
+        //     carouselContainer.addEventListener('mouseleave', () => {
+        //         startAutoSlide();
+        //     });
+        // });
     </script>
     <!-- Header -->
     <header class="header">
@@ -1501,10 +1543,12 @@
             </p>
             <div class="video-container">
                 <div class="video-placeholder">
-                    <button class="play-button">▶</button>
+                    <img src="./Food/video.png" alt="">
+                    <img class="play-button" src="./Arrow/Arrow.png" alt="">
                 </div>
             </div>
         </div>
+        <div class="green-bg"></div>
     </section>
 
     <!-- Contact Section -->
@@ -1530,7 +1574,7 @@
                     </form>
                 </div>
                 <div class="contact-illustration">
-                    <img src="" alt="Delivery Person Illustration">
+                    <img src="./Delivery Man/Delivery man.png" alt="Delivery Person Illustration">
                 </div>
             </div>
         </div>
