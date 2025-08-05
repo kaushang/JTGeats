@@ -201,45 +201,44 @@
   /* Popular Items Section */
   .popular-items {
       background: #f7f8fa;
-      padding: 60px 0;
+      padding: 0 0 60px 0;
       text-align: center;
   }
 
   .carousel-container {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto 40px;
-      overflow: hidden;
-      border-radius: 20px;
-      padding: 0 60px;
-  }
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  overflow: hidden;
+  border-radius: 20px;
+}
 
   .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease-in-out;
-      will-change: transform;
-  }
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
+}
 
   .carousel-slide {
-      min-width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      padding: 20px 60px;
-      flex-shrink: 0;
-  }
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 60px;
+  flex-shrink: 0;
+}
 
   .popular-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-      width: 280px;
-      position: relative;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-  }
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  width: 280px;
+  position: relative;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
 
   .popular-card:hover {
       transform: translateY(-8px);
@@ -446,12 +445,12 @@
   }
 
   .nav-arrow.left {
-      left: -25px;
-  }
+  left: -25px;
+}
 
-  .nav-arrow.right {
-      right: -25px;
-  }
+.nav-arrow.right {
+  right: -25px;
+}
 
   .carousel-indicators {
       display: flex;
@@ -930,27 +929,36 @@
           gap: 20px;
       }
 
-      .carousel-container {
-          margin-bottom: 20px;
-          padding: 0 20px;
-      }
+        .carousel-container {
+    margin-bottom: 20px;
+  }
 
-      .carousel-slide {
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-          padding: 0 20px;
-      }
+  .carousel-slide {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+  }
 
-      .popular-card {
-          width: 100%;
-          max-width: 300px;
-          margin: 0;
-      }
+  .popular-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0;
+  }
 
-      .nav-arrow {
-          display: none;
-      }
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .nav-arrow.left {
+    left: -15px;
+  }
+
+  .nav-arrow.right {
+    right: -15px;
+  }
 
       /* Modal responsive styles */
       .modal {
