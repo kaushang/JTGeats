@@ -6,994 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JTGeats - Authentic Home Food in India</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        .header {
-            background: #1AC073;
-            color: white;
-            padding: 15px 0;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 35px;
-            width: auto;
-        }
-
-        .nav {
-            display: flex;
-            gap: 35px;
-            list-style: none;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            transition: opacity 0.3s;
-        }
-
-        .nav a:hover {
-            opacity: 0.8;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .header-icons img {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: #1AC073;
-            color: white;
-            padding: 60px 0 80px;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 80px;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .hero-title {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-description {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .search-container {
-            display: flex;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            max-width: 400px;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            outline: none;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .search-input::placeholder {
-            color: #999;
-        }
-
-        .search-container img {
-            padding: 15px 25px;
-            background: #F3BA00;
-            cursor: pointer;
-            width: auto;
-            height: auto;
-        }
-
-        .hero-illustration {
-            flex: 1;
-            max-width: 450px;
-            text-align: center;
-        }
-
-        .hero-illustration img {
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-        }
-
-        /* Home Kitchen Section */
-        .home-kitchen {
-            background: #f7f8fa;
-            padding: 60px 0;
-        }
-
-        .section-title {
-            letter-spacing: -2px;
-            font-size: 40px;
-            font-weight: bolder;
-            color: #000000;
-            margin-bottom: 40px;
-        }
-
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-bottom: 40px;
-            row-gap: 40px;
-        }
-
-        .food-card {
-            height: fit-content;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .food-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .food-image {
-            width: 100%;
-            height: 245px;
-            position: relative;
-        }
-
-        .price {
-            font-size: 18px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .add-button {
-            width: 30px;
-            height: 30px;
-            background: #F3BA00;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Popular Items Section */
-        .popular-items {
-            background: #f7f8fa;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .carousel-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto 40px;
-            overflow: hidden;
-            border-radius: 20px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.4s ease-in-out;
-            will-change: transform;
-        }
-
-        .carousel-slide {
-            /* min-width: 100%; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            padding: 0 40px;
-        }
-
-        .popular-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-            width: 300px;
-            margin: 0 15px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .popular-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .popular-image {
-            width: 100%;
-            height: 220px;
-            background: #f0f0f0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .popular-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .discount-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: #F3BA00;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .food-content {
-            padding: 18px;
-        }
-
-        .food-name-price {
-            width: 103%;
-            height: fit-content;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 14px;
-            margin-top: -10px;
-        }
-
-        .food-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .food-rating {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .rating-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .rating-stars {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #f5f5f5;
-            color: #333;
-            font-size: 10px;
-            font-weight: 600;
-            padding: 0px 6px;
-            border-radius: 6px;
-            margin-right: 12px;
-            border: 1px solid rgba(128, 128, 128, 0.09);
-        }
-
-        .food-star-text {
-            height: 20px;
-            width: fit-content;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .star-icon {
-            font-size: 14px;
-            margin-right: 6px;
-        }
-
-        .plus {
-            height: 12px;
-        }
-
-        .rating-text {
-            align-self: center;
-            font-size: 12px;
-            background: #f5f5f5;
-            padding: 0px 4px;
-            font-weight: 500;
-            border-radius: 6px;
-            border-left: 4px #bebebe solid;
-            border-right: 4px #bebebe solid;
-        }
-
-        .rating-star-text {
-            width: fit-content;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .food-price {
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quantity-btn {
-            width: 32px;
-            height: 32px;
-            background: #F3BA00;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-
-        .quantity-btn:hover {
-            background: #e6a800;
-        }
-
-        .quantity-display {
-            min-width: 20px;
-            text-align: center;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .add-button {
-            width: 23px;
-            height: 22px;
-            background: #F3BA00;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-
-        .add-button:hover {
-            background: #e6a800;
-        }
-
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: #1AC073;
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 192, 115, 0.3);
-        }
-
-        .nav-arrow:hover {
-            background: #158f5f;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(26, 192, 115, 0.4);
-        }
-
-        .nav-arrow.left {
-            /* left: -25px; */
-        }
-
-        .nav-arrow.right {
-            right: -25px;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: #1AC073;
-            transform: scale(1.2);
-        }
-
-        .indicator:hover {
-            background: #1AC073;
-            opacity: 0.7;
-        }
-
-        .order-button {
-            background: #1AC073;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .order-button:hover {
-            background: #158f5f;
-        }
-
-        /* Video Section */
-        .video-section {
-            background: #fafafa;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .video-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .video-subtitle {
-            font-size: 24px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .video-description {
-            font-size: 16px;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .video-container {
-            margin: 0 auto;
-            position: relative;
-            /* border-radius: 12px; */
-            overflow: hidden;
-            /* background-color: #c7eacc; */
-            width: fit-content;
-        }
-
-        .video-placeholder {
-            height: 442px;
-            position: relative;
-            display: inline-block;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .video-placeholder img {
-            display: block;
-        }
-
-        .video-placeholder::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            pointer-events: none;
-        }
-
-        .green-bg {
-            margin-top: -224px;
-            background-color: #c7eacc;
-            height: 342px;
-            width: 100%;
-        }
-
-        .play-button {
-            margin: 0px;
-            position: absolute;
-            top: 37%;
-            left: 43%;
-            cursor: pointer;
-            border: none;
-        }
-
-        .play-button img {
-            margin: 0px;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background-color: #f7f8fa;
-            padding: 60px 0;
-        }
-
-        .contact-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 60px;
-        }
-
-        .contact-form {
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .contact-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .contact-subtitle {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            flex: 1;
-        }
-
-        .form-group.full {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus {
-            border-color: #1AC073;
-        }
-
-        textarea.form-input {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-button {
-            background: #1AC073;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .submit-button:hover {
-            background: #158f5f;
-        }
-
-        .contact-illustration {
-            flex: 1;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .contact-illustration img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1AC073;
-            color: white;
-            padding: 40px 0 20px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo img {
-            height: 35px;
-            width: auto;
-        }
-
-        .footer-nav {
-            display: flex;
-            gap: 35px;
-            list-style: none;
-        }
-
-        .footer-nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            transition: opacity 0.3s;
-        }
-
-        .footer-nav a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .footer-social img {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 20px;
-            text-align: center;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .food {
-            height: 245px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .food-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .carousel-container {
-                margin-bottom: 20px;
-                padding: 0 20px;
-            }
-
-            .carousel-slide {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-                padding: 0 20px;
-            }
-
-            .popular-card {
-                width: 100%;
-                max-width: 300px;
-                margin: 0;
-            }
-
-            .nav-arrow {
-                display: none;
-            }
-
-            .contact-content {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .nav,
-            .footer-nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .food-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <link href="./styles.css" rel="stylesheet">
 </head>
 
 <body>
-    <script>
-        const carousel = document.getElementById("carousel");
-        const leftBtn = document.getElementById("leftBtn");
-        const rightBtn = document.getElementById("rightBtn");
-
-        const cardWidth = 300; // approx card width + margin
-
-        leftBtn.addEventListener("click", () => {
-            carousel.scrollBy({
-                left: -cardWidth,
-                behavior: "smooth"
-            });
-        });
-
-        rightBtn.addEventListener("click", () => {
-            carousel.scrollBy({
-                left: cardWidth,
-                behavior: "smooth"
-            });
-        });
-
-        // let currentSlide = 0;
-        // const totalSlides = 3;
-        // let autoSlideInterval;
-        // let quantities = [1, 0, 0, 0, 0, 0, 0, 0, 0]; // Track quantities for each item
-
-        // function updateCarousel() {
-        //     const carouselTrack = document.getElementById('carouselTrack');
-        //     const translateX = -currentSlide * 100;
-        //     carouselTrack.style.transform = `translateX(${translateX}%)`;
-
-        //     // Update indicators
-        //     const indicators = document.querySelectorAll('.indicator');
-        //     indicators.forEach((indicator, index) => {
-        //         indicator.classList.toggle('active', index === currentSlide);
-        //     });
-        // }
-
-        // function nextSlide() {
-        //     currentSlide = (currentSlide + 1) % totalSlides;
-        //     updateCarousel();
-        //     resetAutoSlide();
-        // }
-
-        // function previousSlide() {
-        //     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        //     updateCarousel();
-        //     resetAutoSlide();
-        // }
-
-        // function goToSlide(slideIndex) {
-        //     currentSlide = slideIndex;
-        //     updateCarousel();
-        //     resetAutoSlide();
-        // }
-
-        // function startAutoSlide() {
-        //     autoSlideInterval = setInterval(nextSlide, 5000);
-        // }
-
-        // function resetAutoSlide() {
-        //     clearInterval(autoSlideInterval);
-        //     startAutoSlide();
-        // }
-
-        // // Quantity control functions
-        // function increaseQuantity(itemIndex) {
-        //     quantities[itemIndex]++;
-        //     document.getElementById(`quantity-${itemIndex}`).textContent = quantities[itemIndex];
-        // }
-
-        // function decreaseQuantity(itemIndex) {
-        //     if (quantities[itemIndex] > 1) {
-        //         quantities[itemIndex]--;
-        //         document.getElementById(`quantity-${itemIndex}`).textContent = quantities[itemIndex];
-        //     }
-        // }
-
-        // function addToCart(itemIndex) {
-        //     quantities[itemIndex] = 1;
-        //     console.log(`Added item ${itemIndex} to cart`);
-        //     // Here you can add actual cart functionality
-        // }
-
-        // // Initialize carousel
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     updateCarousel();
-        //     startAutoSlide();
-
-        //     // Pause auto-slide on hover
-        //     const carouselContainer = document.querySelector('.carousel-container');
-        //     carouselContainer.addEventListener('mouseenter', () => {
-        //         clearInterval(autoSlideInterval);
-        //     });
-
-        //     carouselContainer.addEventListener('mouseleave', () => {
-        //         startAutoSlide();
-        //     });
-
-        //     // Touch/swipe support for mobile
-        //     let startX = 0;
-        //     let endX = 0;
-
-        //     carouselContainer.addEventListener('touchstart', (e) => {
-        //         startX = e.touches[0].clientX;
-        //     });
-
-        //     carouselContainer.addEventListener('touchmove', (e) => {
-        //         endX = e.touches[0].clientX;
-        //     });
-
-        //     carouselContainer.addEventListener('touchend', () => {
-        //         const threshold = 50;
-        //         const diff = startX - endX;
-
-        //         if (Math.abs(diff) > threshold) {
-        //             if (diff > 0) {
-        //                 nextSlide();
-        //             } else {
-        //                 previousSlide();
-        //             }
-        //         }
-        //     });
-
-        //     // Keyboard navigation
-        //     document.addEventListener('keydown', (e) => {
-        //         if (e.key === 'ArrowLeft') {
-        //             previousSlide();
-        //         } else if (e.key === 'ArrowRight') {
-        //             nextSlide();
-        //         }
-        //     });
-        // });
-        // // Update indicators
-
-        // const indicators = document.querySelectorAll('.indicator');
-        // indicators.forEach((indicator, index) => {
-        //     indicator.classList.toggle('active', index === currentSlide);
-        // });
-
-
-        // function nextSlide() {
-        //     currentSlide = (currentSlide + 1) % totalSlides;
-        //     updateCarousel();
-        //     resetAutoSlide();
-        // }
-
-        // function previousSlide() {
-        //     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        //     updateCarousel();
-        //     resetAutoSlide();
-        // }
-
-        // function goToSlide(slideIndex) {
-        //     currentSlide = slideIndex;
-        //     updateCarousel();
-        //     resetAutoSlide();
-        // }
-
-        // function startAutoSlide() {
-        //     autoSlideInterval = setInterval(nextSlide, 5000);
-        // }
-
-        // function resetAutoSlide() {
-        //     clearInterval(autoSlideInterval);
-        //     startAutoSlide();
-        // }
-
-        // // Start auto-slide when page loads
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     startAutoSlide();
-
-        //     // Pause auto-slide on hover
-        //     const carouselContainer = document.querySelector('.carousel-container');
-        //     carouselContainer.addEventListener('mouseenter', () => {
-        //         clearInterval(autoSlideInterval);
-        //     });
-
-        //     carouselContainer.addEventListener('mouseleave', () => {
-        //         startAutoSlide();
-        //     });
-        // });
-    </script>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="" alt="JTGeats Logo">
+                    <img src="./Logo/JTGeats.svg" alt="JTGeats Logo">
                 </div>
                 <nav>
                     <ul class="nav">
@@ -1005,8 +27,8 @@
                     </ul>
                 </nav>
                 <div class="header-icons">
-                    <img src="" alt="Search Icon">
-                    <img src="" alt="Shopping Bag Icon">
+                    <img src="./Search/Vector.png" alt="Search Icon">
+                    <img src="./Bag/Card.png" alt="Shopping Bag Icon">
                 </div>
             </div>
         </div>
@@ -1018,10 +40,11 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Authentic Home food in India</h1>
-                    <p class="hero-description">JTGeats is a courier service in which authentic home cook food is delivered to a customer</p>
+                    <p class="hero-description">JTGeats is a courier service in which authentic home <br> cook food is
+                        delivered to a customer</p>
                     <div class="search-container">
                         <input type="text" class="search-input" placeholder="Search food you love">
-                        <img src="" alt="Search Button">
+                        <span alt="Search Button">Search</span>
                     </div>
                 </div>
                 <div class="hero-illustration">
@@ -1341,181 +364,230 @@
                         <div class="popular-card">
                             <div class="popular-image">
                                 <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_Y6OgisiGBjM.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Home made pizza</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.7</span>
-                                    </div>
-                                    <span class="rating-text">50-79 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹190</span>
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="decreaseQuantity(0)">-</button>
-                                        <span class="quantity-display" id="quantity-0">1</span>
-                                        <button class="quantity-btn" onclick="increaseQuantity(0)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
                                     </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="popular-card">
                             <div class="popular-image">
                                 <div class="discount-badge">20%</div>
+                                <img src="./Food/pexels-omar-mahmood-106343 1.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Tandoori Chicken</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.3</span>
-                                    </div>
-                                    <span class="rating-text">15-29 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹184</span>
-                                    <button class="add-button" onclick="addToCart(1)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="popular-card">
                             <div class="popular-image">
-                                <div class="discount-badge">50%</div>
+                                <div class="discount-badge">20%</div>
+                                <img src="./Food/pexels-mumma-oyens-8799602 1.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Chilli Chicken</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.1</span>
-                                    </div>
-                                    <span class="rating-text">30-40 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹116</span>
-                                    <button class="add-button" onclick="addToCart(2)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Slide 2 -->
                     <div class="carousel-slide">
                         <div class="popular-card">
                             <div class="popular-image">
-                                <div class="discount-badge">30%</div>
+                                <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_33GPuoFI7v8.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Butter Chicken</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.7</span>
-                                    </div>
-                                    <span class="rating-text">40-50 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹220</span>
-                                    <button class="add-button" onclick="addToCart(3)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="popular-card">
                             <div class="popular-image">
-                                <div class="discount-badge">25%</div>
+                                <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_CbNAuxSZTFo.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Biryani Special</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.6</span>
-                                    </div>
-                                    <span class="rating-text">55-65 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹280</span>
-                                    <button class="add-button" onclick="addToCart(4)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="popular-card">
                             <div class="popular-image">
-                                <div class="discount-badge">15%</div>
+                                <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_MqT0asuoIcU.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Paneer Tikka</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.2</span>
-                                    </div>
-                                    <span class="rating-text">30-40 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹160</span>
-                                    <button class="add-button" onclick="addToCart(5)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Slide 3 -->
                     <div class="carousel-slide">
                         <div class="popular-card">
                             <div class="popular-image">
-                                <div class="discount-badge">40%</div>
+                                <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_sejqj6Eaqe8.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Masala Dosa</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.4</span>
-                                    </div>
-                                    <span class="rating-text">25-35 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹120</span>
-                                    <button class="add-button" onclick="addToCart(6)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="popular-card">
-                            <div class="popular-image">
-                                <div class="discount-badge">35%</div>
-                            </div>
-                            <div class="food-content">
-                                <div class="food-name">Chole Bhature</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.0</span>
-                                    </div>
-                                    <span class="rating-text">35-45 min</span>
-                                </div>
-                                <div class="food-price">
-                                    <span class="price">₹140</span>
-                                    <button class="add-button" onclick="addToCart(7)">+</button>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="popular-card">
                             <div class="popular-image">
                                 <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_UxRhrU8fPHQ.png" alt="">
                             </div>
                             <div class="food-content">
-                                <div class="food-name">Fish Curry</div>
-                                <div class="food-rating">
-                                    <div class="rating-left">
-                                        <span class="star-icon">★</span>
-                                        <span class="rating-stars">4.5</span>
-                                    </div>
-                                    <span class="rating-text">50-60 min</span>
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
                                 </div>
-                                <div class="food-price">
-                                    <span class="price">₹250</span>
-                                    <button class="add-button" onclick="addToCart(8)">+</button>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popular-card">
+                            <div class="popular-image">
+                                <div class="discount-badge">20%</div>
+                                <img src="./Food/unsplash_60nzTP7_hMQ.png" alt="">
+                            </div>
+                            <div class="food-content">
+                                <div class="food-name-price">
+                                    <div class="food-name">Home made pizza</div>
+                                    <span class="food-price">₹190</span>
+                                </div>
+                                <div class="food-rating">
+                                    <div class="food-star-text">
+                                        <span class="rating-stars">
+                                            <img class="star-icon" src="./Star/Vector.svg" alt="">
+                                            <span>4.7</span>
+                                        </span>
+                                        <span class="rating-text">50-79 min</span>
+                                    </div>
+                                    <button class="add-button">
+                                        <img src="./Plus/plus.svg" alt="">
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1529,17 +601,16 @@
                 <div class="indicator" onclick="goToSlide(1)"></div>
                 <div class="indicator" onclick="goToSlide(2)"></div>
             </div>
-            <button class="order-button">Request a Call</button>
+            <button class="order-button" onclick="openModal()">Request a Call</button>
         </div>
     </section>
 
     <!-- Video Section -->
     <section class="video-section">
         <div class="container">
-            <h2 class="video-title">We are providing best</h2>
-            <h3 class="video-subtitle">home cooked food delivery service.</h3>
+            <h1 class="video-title">We are providing best <br> home cooked food delivery service.</h1>
             <p class="video-description">
-                A food delivery service that enables users to order food from local restaurants and food cooperatives via their smartphone or computer. Food is prepared by restaurants then transported by food couriers to the customers.
+                Away from home and craving tasty homemade recipes? <br> Choose from a selection of our delicious home cooked dishes
             </p>
             <div class="video-container">
                 <div class="video-placeholder">
@@ -1556,19 +627,22 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-form">
-                    <h3 class="contact-title">Do you have a question</h3>
-                    <h3 class="contact-subtitle">or want to become a seller?</h3>
+                    <div class="contact-text">
+                        <h3 class="contact-title">Do you have a question</h3>
+                        <h3 class="contact-subtitle">or want to become a seller?</h3>
+                        <p>Fill this form and our manager will contact you next 48 hours.</p>
+                    </div>
                     <form>
                         <div class="form-row">
                             <div class="form-group">
                                 <input type="text" class="form-input" placeholder="Your Name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Your Email">
+                                <input type="email" class="form-input" placeholder="Your e-mail">
                             </div>
                         </div>
                         <div class="form-group full">
-                            <textarea class="form-input" placeholder="Your Message"></textarea>
+                            <textarea class="form-input" placeholder="Your message"></textarea>
                         </div>
                         <button type="submit" class="submit-button">Submit</button>
                     </form>
@@ -1584,8 +658,8 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="" alt="JTGeats Logo">
+                <div class="logo">
+                    <img src="./Logo/JTGeats.png" alt="JTGeats Logo">
                 </div>
                 <nav>
                     <ul class="footer-nav">
@@ -1597,15 +671,44 @@
                     </ul>
                 </nav>
                 <div class="footer-social">
-                    <img src="" alt="Facebook">
-                    <img src="" alt="Instagram">
+                    <img src="./Social Media/Facebook.png" alt="Facebook">
+                    <img src="./Social Media/Instagram.png" alt="Instagram">
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 JTGeats. All rights reserved.</p>
-            </div>
+            <hr style="font-weight: 400; margin-bottom: 30px;">
         </div>
     </footer>
+
+    <!-- Request Dish Modal -->
+    <div class="modal-overlay" id="requestModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-icon">🍽️</div>
+                <h2 class="modal-title">Request a Dish</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form class="modal-form" id="requestForm">
+                <div class="modal-form-group">
+                    <label for="dishName">Dish Name *</label>
+                    <input type="text" id="dishName" name="dishName" required placeholder="What dish would you like to request?">
+                </div>
+                <div class="modal-form-group">
+                    <label for="contactName">Your Name *</label>
+                    <input type="text" id="contactName" name="contactName" required placeholder="Enter your full name">
+                </div>
+                <div class="modal-form-group">
+                    <label for="contactEmail">Email *</label>
+                    <input type="email" id="contactEmail" name="contactEmail" required placeholder="Enter your email address">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn modal-btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="modal-btn modal-btn-primary">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
 </body>
 
 </html>
